@@ -8,5 +8,6 @@ express()
 .set('view engine', 'ejs')
 .use(express.bodyParser())
 .get('/', controllers.index)
+.get('/hello',controllers.hello)
 .post('/user', controllers.createUser)
 .listen(port, host);

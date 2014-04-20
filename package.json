@@ -1,0 +1,26 @@
+{
+  "name": "NodeJSTest",
+  "version": "0.0.0",
+  "description": "This is a nodeJs project for test",
+  "main": "index.js",
+  "scripts": {
+    "test": "https://github.com/ETLin/NodeJSTestGit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ETLin/NodeJSTestGit.git"
+  },
+  "keywords": [
+    "Node.Js",
+    "Test"
+  ],
+  "author": "ETLin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ETLin/NodeJSTestGit/issues"
+  },
+  "homepage": "https://github.com/ETLin/NodeJSTestGit",
+  "dependencies": {
+    "express": "^3.5.1"
+  }
+}

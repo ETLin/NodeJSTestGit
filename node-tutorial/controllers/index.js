@@ -10,3 +10,6 @@ module.exports.createUser = function (req, res) {
     res.json(user);
   });
 }
+module.exports.hello = function (req, res) {
+  res.send("The time is "+ new Date().toString());
+}
