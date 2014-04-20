@@ -1,20 +1,13 @@
 var http = require('http');
 var host = '127.0.0.1';
+var port = 5000;
 
+console.log('before calling http.createServer');
 http.createServer(function (req, res) {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/html');
+  console.log(req.method + ' ' + req.url + ' HTTP/' + req.httpVersion);
 
-  var body = 
-'<html>'+
-'<head>'+
-  '<title>An Example Page</title>'+
-'</head>'+
-'<body>'+
-  'Hello World, this is a very simple HTML document.'+
-'</body>'+
-'</html>'
-  
-  res.setHeader('Content-Length', body.length);
-  res.end(body);
-}).listen(5000, host);
+  res.end('ok');
+}).listen(port, host, function () {
+  console.log('HTTP server started at ' + host + ':' + port);
+});
+console.log('http.createServer and .listen called');
