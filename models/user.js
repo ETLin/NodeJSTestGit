@@ -1,20 +1,11 @@
-var fs = require('fs');
-var usersFilePathname = __dirname + '/users.json';
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
+var UserSchema = new Schema({
+  fname:{type:String, required:true},
+  lname:{type:String, required:true},
+  created:{type:Date,default:Date.now},
+  updated:Date
+});
 
-module.exports.create = function (user, callback) {
-  fs.readFile(usersFilePathname, 'utf8', function (err, data) {
-    var users = []
-    if (!err) {
-      users = JSON.parse(data);
-    }
-    
-    user.id = users.length;
-    users.push(user);
-    fs.writeFile(usersFilePathname, JSON.stringify(users), function (err) {
-      if (err) { throw err; }
-
-      callback(user);
-    });
-  });
-}
+var User = mongoose.model('User',UserSchema);

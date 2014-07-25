@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta charset="utf-8">
+		<title>D3: Loading oceans GeoJSON data</title>
+		<script type="text/javascript" src="/js/d3.min.js"></script>
+		<script type="text/javascript" src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
+		<link rel='stylesheet' href='/css/bootstrap.css' />
+		<link rel='stylesheet' href='/css/bootstrap-theme.css' />
+		<script src="/js/jquery-2.1.0.js"></script>
+		<script src="/js/bootstrap.js"></script>  		
+		<style type="text/css">
+			/* No style rules here yet */		
+		</style>		
+		<style type="text/css">
+/*			body{
+				padding-top:70px;
+			}*/
+/*
+			.nav-wrapper{
+				width: 80%;
+			}*/
+		</style>
+		<script type="text/javascript" charset="utf-8">
+			$(function(){
+
+			});
+		</script>
+	</head>
+
+	<body>
+
+		<div id="container" class="container">
+		<script type="text/javascript">
+
+			//Width and height
+			var w = 1000;
+			var h = 600;
+
+			//Define map projection
+			var projection = d3.geo.eisenlohr()
+								   .translate([w/2, h/2])
+								   .scale([50]);
+
+			//Define path generator
+			var path = d3.geo.path()
+							 .projection(projection);
+
+			//Create SVG element
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+
+			//Load in GeoJSON data
+			d3.json("oceans.json", function(json) {
+				
+				//Bind data and create one path per GeoJSON feature
+				svg.selectAll("path")
+				   .data(json.features)
+				   .enter()
+				   .append("path")
+				   .attr("d", path)
+				   .style("fill", "steelblue");
+		
+			});
+			
+		</script>
+		</div>
+	</body>
+
+</html>

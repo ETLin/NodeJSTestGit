@@ -1,5 +1,31 @@
 
+		<script type="text/javascript" charset="utf-8">
+			$(function(){
+				$("#submit4update").click(function(e){
+					// console.log('click')
+					var update_fname = $('.form_update .update_fname').val();
+					var update_lname = $('.form_update .update_lname').val();
+					$.ajax({
+						type:"PUT",
+						url:"/update",
+						data: { update_fname: update_fname, update_lname: update_lname }
+					});
+					e.preventDefault();
+				});
 
+				$("#submit4delete").click(function(e){
+					console.log('click')
+					var delete_fname = $('.form_delete .delete_fname').val();
+					var delete_lname = $('.form_delete .delete_lname').val();
+					$.ajax({
+						type:"DELETE",
+						url:"/destory",
+						data: { delete_fname: delete_fname, delete_lname: delete_lname }
+					});
+					e.preventDefault();
+				});				
+			});
+		</script>
 <div class= "hero-unit">
 	<p><%= title %><p> 
 	<h1>Welcome to Test Blog</h1>
@@ -9,6 +35,27 @@
 		<a class="btn btn-large" href="/reg">Sign Up</a>
 	</p>
 </div>
+
+
+<form action="/create" method="post">
+  <p>First name: <input type="text" name="fname" /></p>
+  <p>Last name: <input type="text" name="lname" /></p>
+  <input id="submit4create" type="submit" value="Submit" />
+</form>
+
+<form class="form_update" action="/update" method="post">
+  <p>which needed to update First name: <input class="update_fname" type="text" name="update_fname" /></p>
+  <p>update Last name: <input class="update_lname" type="text" name="update_lname" /></p>
+  <input id="submit4update" type="submit" value="Submit" />
+</form>
+
+<form class="form_delete" action="/destory" method="post">
+  <p>which needed to delete First name: <input class="delete_fname" type="text" name="delete_fname" /></p>
+  <p>delete Last name: <input class="delete_lname" type="text" name="delete_lname" /></p>
+  <input id="submit4delete" type="submit" value="Submit" />
+</form>
+
+
 
 <div class="row">
 	<div class="span4">
